@@ -28,7 +28,7 @@ class Admin extends CI_Controller {
 			'id_kategori' => $id_kategori
 			);
 		$this->m_admin->input($data,'news');
-		redirect(base_url('admin/'));
+		redirect(base_url('admin/admin'));
 	}
 	
 	function tambah_kategori(){
@@ -40,6 +40,34 @@ class Admin extends CI_Controller {
 			'kategori' => $kategori
 			);
 		$this->m_admin->input($data,'kategori');
+		redirect(base_url('admin/'));
+	}
+	
+	function hapus($id){//untuk mengambil data id yang dikirim melalui url link hapus{
+		$where = array('id_news'=>$id); 
+		$this->m_admin->hapus($where,'news'); //parameter pertama variabel array $where berisi data id dan parameter kedua untuk nama tabel
+		redirect(base_url('admin/'));
+	}
+	
+	function edit($id_news){
+		$data['news'] = $this->m_admin->pilih($id_news);
+		$this->load->view('admin/header');
+		$this->load->view('admin/update', $data);
+		$this->load->view('admin/footer');
+	}
+		
+	function update(){
+		$id_news = $this->input->post('id_news');
+		$title = $this->input->post('title');
+		$content = $this->input->post('content');
+		$data = array(
+			'title'		=> $title,
+			'content'	=> $content
+		);
+		$where = array(
+			'id_news'		=> $id_news
+		);	
+		$this->m_admin->update_data($id_news,$data);
 		redirect(base_url('admin/'));
 	}
 	

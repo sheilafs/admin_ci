@@ -14,4 +14,19 @@ class M_admin extends CI_Model {
 	function input($data,$table){
 		$this->db->insert($table,$data); //untuk menambah data berdasar array $table dan $data
 	}
+	
+	function hapus($where,$table){
+		$this->db->where($where); //$where untuk menyeleksi query
+		$this->db->delete($table); //delete untuk menghapus record
+	}
+	
+	function pilih($id_news){		
+		 $this->db->where('id_news',$id_news);
+		return $this->db->get('news')->result(); //sama seperi SELECT * FROM news WHERE id_news=‘$id_news’
+	}
+
+	function update_data($id_news,$data){
+		$this->db->where('id_news',$id_news);
+		$this->db->update('news',$data);
+	}
 }

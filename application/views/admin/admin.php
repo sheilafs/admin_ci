@@ -107,21 +107,26 @@
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>Id News</th>
+							<th>No. </th>
 							<th>Judul</th>
 							<th>Konten</th>
 							<th>Gambar</th>
 							<th>Kategori</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
-					<?php foreach($kategori as $k) { ?>
+					<?php $no=1; foreach($kategori as $k) { ?>
 					<tbody>
 						<tr>
-							<td scope="row"><?php echo $k->id_news;?></td>
+							<td scope="row"><?php echo $no++;?></td>
 							<td><?php echo $k->title;?></td>
 							<td><?php echo $k->content;?></td>
 							<td><img src="<?php echo base_url('asset/upload/'.$k->image); ?>" style="width:150px; height:150px;"></td>
 							<td><?php echo $k->kategori;?></td>
+							<td>
+								<a href="<?php echo base_url('admin/edit/'.$k->id_news); ?>"><button type="button" class="btn btn-info">Edit</button></a>
+								<a href='<?php echo base_url('admin/hapus/'.$k->id_news); ?>'><button type="button" class="btn btn-danger">Hapus</Button></a>
+							</td>
 						</tr>
 					<?php } ?>
 					</tbody>
