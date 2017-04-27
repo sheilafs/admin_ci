@@ -9,6 +9,7 @@ class Admin extends CI_Controller {
 		if($this->session->userdata('logged_in') == TRUE){
 			$data['kat'] = $this->m_admin->kat()->result();
 			$data['kategori'] = $this->m_admin->kategori()->result();
+			$data['news'] = $this->m_admin->kategori()->result();
 			$this->load->view('admin/header');
 			$this->load->view('admin/admin', $data);
 			$this->load->view('admin/footer');
@@ -44,11 +45,11 @@ class Admin extends CI_Controller {
 	}
 	
 	function tambah_kategori(){
-		$id_kategori = $this->input->post('id_kategori');
+		$id_ktg = $this->input->post('id_ktg');
 		$kategori = $this->input->post('kategori');
 		
 		$data = array(
-			'id_kategori' => $id_kategori,
+			'id_ktg' => $id_ktg,
 			'kategori' => $kategori
 			);
 		$this->m_admin->input($data,'kategori');

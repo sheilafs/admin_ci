@@ -3,14 +3,14 @@
         <!-- Page Heading -->
         <div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-		<h3>Hasil Pencarian</h3>
+		<h3>Hasil</h3>
 		<hr>
 		<div style="float:right;">
 			<a href="<?php echo base_url('admin/'); ?>"><button type="button" class="btn btn-info">Kembali</button></a>
 		</div>
 		<?php
-			if(count($cari)>0){
-				$no=1; foreach ($cari as $data) { ?>
+		if(count($grup)>0){
+			$no=1; foreach ($grup as $data) { ?>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -36,28 +36,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<?php }
-		} else { ?>
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>No. </th>
-					<th>Judul</th>
-					<th>Konten</th>
-					<th>Gambar</th>
-					<th>Kategori</th>
-					<th>Aksi</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td scope="row" colspan="6" style="background-color:red; color:white;"><?php echo "Data tidak ditemukan";?></td>
-				</tr>
-			</tbody>
-		</table>
-		<?php
-		}
-		?>
+		<?php }} ?>
 		</div>
 		</div>
 		</div>

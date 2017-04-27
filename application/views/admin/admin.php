@@ -28,7 +28,7 @@
 							<form class="form-horizontal form-label-left" action="<?php echo base_url(). 'admin/tambah_kategori'; ?>" method="post">
 								<div class="form-group">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12">Kategori</label>
-									<div class="col-md-6 col-sm-6 col-xs-12"><input class="form-control" type="hidden" name="id_kategori"></div>
+									<div class="col-md-6 col-sm-6 col-xs-12"><input class="form-control" type="hidden" name="id_ktg"></div>
 									<div class="col-md-6 col-sm-6 col-xs-12"><input class="form-control" type="text" name="kategori" placeholder="Tulis Kategori Yang Ditambahkan"></div>
 								</div>
 							</div>
@@ -79,8 +79,8 @@
 								</div>
 								<div class="form-group">
 									<label class="control-label col-md-2 col-sm-2 col-xs-12">Kategori</label>
-									<div class="col-md-5 col-sm-5 col-xs-12"><select class="form-control" type="number" name="id_kategori" style="width:400px;">
-									<?php foreach($kat as $t){?><option value="<?php echo $t->id_kategori;?>"><?php echo $t->kategori ?></option><?php } ?></select></div>
+									<div class="col-md-5 col-sm-5 col-xs-12"><select class="form-control" type="number" name="id_ktg" style="width:400px;">
+									<?php foreach($kat as $t){?><option value="<?php echo $t->id_ktg;?>"><?php echo $t->kategori ?></option><?php } ?></select></div>
 								</div>
 							</div>
 						</div>
@@ -104,13 +104,16 @@
 			<h2>Postingan News</h2>
 			<div class="x_title"></div>
 				<div class="x_content">
+					<div class="form-group">
 				<form action="<?php echo base_url('admin/hasil')?>" action="GET">
-					<div class="form-group" style="width:200px">
-						<label for="cari">Search</label>
-						<input type="text" class="form-control" id="cari" name="cari" placeholder="cari">
-					</div>
-					<input class="btn btn-primary" type="submit" value="Cari">
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<label>Search</label>
+							<input type="text" class="form-control" id="cari" name="cari" placeholder="cari" style="width:200px;">
+							<br>
+							<input class="btn btn-primary" type="submit" value="Cari">
+						</div>
 				</form>
+					</div>
 				<table class="table table-hover">
 					<thead>
 						<tr>
