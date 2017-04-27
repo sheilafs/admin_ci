@@ -135,7 +135,7 @@
 							<td><?php echo $k->kategori;?></td>
 							<td>
 								<a href="<?php echo base_url('admin/edit/'.$k->id_news); ?>"><button type="button" class="btn btn-info">Edit</button></a>
-								<a href='<?php echo base_url('admin/hapus/'.$k->id_news); ?>'><button type="button" class="btn btn-danger">Hapus</Button></a>
+								<a href="<?php echo base_url('admin/hapus/'.$k->id_news); ?>"><button type="button" class="btn btn-danger">Hapus</Button></a>
 							</td>
 						</tr>
 					<?php } ?>

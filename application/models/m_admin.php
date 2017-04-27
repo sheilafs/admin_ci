@@ -28,9 +28,13 @@ class M_admin extends CI_Model {
 		$this->db->delete($table); //delete untuk menghapus record
 	}
 
-	function update_data($data,$id_news){
-		$this->db->where('id_news',$id_news);
-		$this->db->update('news',$data);
+	function pilih($where, $table){		
+		return $this->db->get_where($table, $where);
+	}
+	
+	function update_data($where, $data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
 		return TRUE;
 	}
 }

@@ -9,7 +9,6 @@ class Admin extends CI_Controller {
 		if($this->session->userdata('logged_in') == TRUE){
 			$data['kat'] = $this->m_admin->kat()->result();
 			$data['kategori'] = $this->m_admin->kategori()->result();
-			$data['news'] = $this->m_admin->kategori()->result();
 			$this->load->view('admin/header');
 			$this->load->view('admin/admin', $data);
 			$this->load->view('admin/footer');
@@ -62,9 +61,9 @@ class Admin extends CI_Controller {
 		redirect(base_url('admin/'));
 	}
 	
-	function edit($id_news){
-		$data['kategori'] = $this->m_admin->kategori()->result();
-		$data['news'] = $this->m_admin->pilih($id_news);
+	function edit($id_news){		
+		$where = array('id_news' => $id_news);
+		$data['news'] = $this->m_admin->pilih($where,'news')->result();
 		$this->load->view('admin/header');
 		$this->load->view('admin/update', $data);
 		$this->load->view('admin/footer');
@@ -72,15 +71,14 @@ class Admin extends CI_Controller {
 		
 	function update(){
 		$id_news = $this->input->post('id_news');
-		$title = $this->input->post('title');
-		$content = $this->input->post('content');
-		$image = $this->input->post('image');
 		$data = array(
-			'title'		=> $title,
-			'content'	=> $content,
-			'image'	=> $image
+			'title'		=> $this->input->post('title'),
+			'content'	=> $this->input->post('content'),
+			'image'	=> $this->input->post('image')
 		);
-		$this->m_admin->update_data($data,$id_news);
+		
+		$where = array('id_news' => $id_news);
+		$this->m_admin->update_data($where,$data,'news');
 		redirect(base_url('admin/'));
 	}
 	
