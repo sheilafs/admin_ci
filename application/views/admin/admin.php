@@ -103,7 +103,14 @@
 				<!-- /Modal News-->
 			<h2>Postingan News</h2>
 			<div class="x_title"></div>
-				<div class="x_content">					
+				<div class="x_content">
+				<form action="<?php echo base_url('admin/hasil')?>" action="GET">
+					<div class="form-group" style="width:200px">
+						<label for="cari">Search</label>
+						<input type="text" class="form-control" id="cari" name="cari" placeholder="cari">
+					</div>
+					<input class="btn btn-primary" type="submit" value="Cari">
+				</form>
 				<table class="table table-hover">
 					<thead>
 						<tr>
@@ -115,8 +122,8 @@
 							<th>Aksi</th>
 						</tr>
 					</thead>
-					<?php $no=1; foreach($kategori as $k) { ?>
 					<tbody>
+					<?php $no=1; foreach($kategori as $k) { ?>
 						<tr>
 							<td scope="row"><?php echo $no++;?></td>
 							<td><?php echo $k->title;?></td>

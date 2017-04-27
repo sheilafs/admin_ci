@@ -1,5 +1,10 @@
 <?php
 class Admin extends CI_Controller {
+	function __construct()
+	{
+		parent::__construct();
+		
+	}
 	function index(){
 		if($this->session->userdata('logged_in') == TRUE){
 			$data['kat'] = $this->m_admin->kat()->result();
@@ -11,6 +16,13 @@ class Admin extends CI_Controller {
 			echo "<script type='text/javascript'> alert('Anda belum login!');</script>";
 			redirect(base_url('login/'), 'refresh');
 		}
+	}
+	
+	function hasil(){
+		$data2['cari'] = $this->m_admin->cari();
+		$this->load->view('admin/header');
+		$this->load->view('admin/result', $data2);
+		$this->load->view('admin/footer');
 	}
 	
 	function tambah_news(){
@@ -50,6 +62,7 @@ class Admin extends CI_Controller {
 	}
 	
 	function edit($id_news){
+		$data['kategori'] = $this->m_admin->kategori()->result();
 		$data['news'] = $this->m_admin->pilih($id_news);
 		$this->load->view('admin/header');
 		$this->load->view('admin/update', $data);
@@ -60,14 +73,13 @@ class Admin extends CI_Controller {
 		$id_news = $this->input->post('id_news');
 		$title = $this->input->post('title');
 		$content = $this->input->post('content');
+		$image = $this->input->post('image');
 		$data = array(
 			'title'		=> $title,
-			'content'	=> $content
+			'content'	=> $content,
+			'image'	=> $image
 		);
-		$where = array(
-			'id_news'		=> $id_news
-		);	
-		$this->m_admin->update_data($id_news,$data);
+		$this->m_admin->update_data($data,$id_news);
 		redirect(base_url('admin/'));
 	}
 	

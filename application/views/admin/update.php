@@ -10,7 +10,7 @@
 					<label class="col-lg-2 col-sm-2 control-label">Judul Artikel</label>
 					<div class="col-lg-10">
 						<input type="hidden" id="id_news" name="id_news">
-						<input type="text" class="form-control" name="title" value="<?php echo $n->title?>"></input>
+						<input type="text" class="form-control" name="title" value="<?php echo $n->title?>">
 					</div>
 				</div>
 				<br><br><br>
@@ -20,8 +20,16 @@
 						<textarea cols="10" rows="20" type="text" class="form-control" name="content"><?php echo $n->content?></textarea>
 					</div>
 				</div>
+				<br><br><br>
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-2 control-label">Gambar</label>
+					<div class="col-lg-10">
+						<textarea cols="10" rows="10" type="text" class="form-control" name="image"><?php echo $n->image?></textarea>
+					</div>
+				</div>
 				<hr>
-				<center><button class="btn btn-info" type="submit"> Simpan</button></center>
+				<center><button class="btn btn-info" type="submit"> Simpan</button>
+				<a href="<?php echo base_url();?>admin/"><button type="button" class="btn btn-warning"> Batal</button></center>
 			</form>
 			<?php } ?>		
 		</div>
